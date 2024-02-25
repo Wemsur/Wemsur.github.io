@@ -4,7 +4,7 @@ export default {
   lang: 'zh-cmn-Hans',
   title: 'Wemsur的个人主页',
   description: 'b站UP Wemsur的个人主页',
-  head: [['link', { rel: 'icon', href: 'https://wemsur.github.io/favicon.jpg' }]],
+  head: [['link', { rel: 'icon', href: 'https://wemsur.github.io/favicon.png' }]],
   themeConfig: {
     // theme-level options
     logo: '/favicon.jpg',

@@ -56,6 +56,7 @@ features:
 </style>
 
 <br>
+<h1></h1>
 <br>
 <br>
 <br>
@@ -67,9 +68,10 @@ features:
 <br>
 <br>
 <br>
-<br>
 
-# 什么？你问我在b站干什么？  
+# 主页   
+
+## 什么？你问我在b站干什么？  
 
 ### 刷minecraft视频，发minecraft视频……没了……
 
@@ -104,9 +106,27 @@ features:
 
 # 想知道为什么服务器倒闭?  <Badge type="warning" text="论我的惨痛经历" />  
 
-### [来这看看](/badserver.html)   
+### [来这看看](/badserver.html)     
 
-#### 笑啊，你怎么不笑啊！难道不好笑吗！
+
+### 你可能觉得开一个服务器很难，实际上并不简单
+### 技术不是难点，人际关系是。
+### 你不需要聪明，但是我太不聪明了
+### 服务器毁于我手，我心服口服
+### 我再也不开服了！
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <script setup>
@@ -114,19 +134,27 @@ import { VPTeamMembers } from 'vitepress/theme'
 
 const members = [
   {
-    avatar: 'https://www.github.com/yyx990803.png',
-    name: 'Evan You',
-    title: 'Creator',
+    avatar: 'https://hiluobo.flarum.cloud/assets/files/2024-02-25/1708826723-647468-bf7c1b10-a322-4042-999f-b22407c5e15d.jpg',
+    name: 'lruri',
+    title: '网友&同学',
     links: [
       { icon: 'github', link: 'https://github.com/yyx990803' },
+      { icon: 'twitter', link: 'https://twitter.com/youyuxi' }
+    ]
+  },
+  {
+    avatar: 'https://hiluobo.flarum.cloud/assets/files/2024-02-25/1708826723-647468-bf7c1b10-a322-4042-999f-b22407c5e15d.jpg',
+    name: 'zane',
+    title: '网友&朋友',
+    links: [
+      { icon: 'github', link: 'https://chzane.github.io' },
       { icon: 'twitter', link: 'https://twitter.com/youyuxi' }
     ]
   }
 ]
 </script>
 
-# Our Team
+# 为数不多的朋友
 
-Say hello to our awesome team.
 
 <VPTeamMembers size="small" :members="members" />

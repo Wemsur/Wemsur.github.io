@@ -1,0 +1,20 @@
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-box {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.search-box:focus {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}

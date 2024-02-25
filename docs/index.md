@@ -154,7 +154,7 @@ const members = [
 ]
 </script>
 
-# 为数不多的朋友
+# 交了不少朋友
 
 
 <VPTeamMembers size="small" :members="members" />

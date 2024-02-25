@@ -6,7 +6,7 @@ hero:
   text: b站鸽子，倒闭腐竹，minecraft菜鸟
   tagline: 往下看吧...
   image:
-    src: /favicon.jpg
+    src: /favicon.png
     alt: VitePress
   actions:
     - theme: brand

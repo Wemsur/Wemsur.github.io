@@ -1,4 +1,3 @@
-// .vitepress/config.js
 
 export default {
   // 网页设置
@@ -6,9 +5,6 @@ export default {
   title: 'Wemsur的个人主页',
   description: 'b站UP Wemsur的个人主页',
   head: [['link', { rel: 'icon', href: 'https://wemsur.github.io/favicon.jpg' }]],
-  base: '/',
-  outDir: 'dist',
-
   themeConfig: {
     // theme-level options
     logo: '/favicon.jpg',
@@ -19,8 +15,3 @@ export default {
     ]
   }
 }
-
-
-
-
-

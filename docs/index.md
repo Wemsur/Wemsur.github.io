@@ -34,6 +34,9 @@ features:
 ---
 
 <style>
+
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
@@ -53,6 +56,94 @@ features:
     --vp-home-hero-image-filter: blur(68px);
   }
 }
+
+
+.htitle {
+	font-family: "Cairo";
+	text-align: center;
+	color: #FFF;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	letter-spacing: 1px;
+	line-height:2
+}
+
+h1 {
+	background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+	background-size: cover;
+	color: transparent;
+	-moz-background-clip: text;
+	-webkit-background-clip: text;
+	text-transform: uppercase;
+	font-size: 120px;
+	margin: 10px 0;
+}
+/* styling my button */
+
+.white-mode {
+	text-decoration: none;
+	padding: 7px 10px;
+	background-color: #122;
+	border-radius: 3px;
+	color: #FFF;
+	transition: .35s ease-in-out;
+	position: absolute;
+	left: 15px;
+	bottom: 15px;
+	font-family: "Montserrat";
+}
+
+.white-mode:hover {
+	background-color: #FFF;
+	color: #122;
+}
+
+/* === removing default button style ===*/
+.button {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+/* button styling */
+.button {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255,255,255,0.6);
+  --animation-color: #37FF8B;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color))
+}
 </style>
 
 <br>
@@ -69,9 +160,13 @@ features:
 <br>
 <br>
 
-# 主页   
+#
 
-## 什么？你问我在b站干什么？  
+
+
+<h1>B站真鸽子</h1>
+
+<a target="_blank" href="http://codepen.io/Moslim/" class="white-mode">OTHER PENS</a>
 
 ### 刷minecraft视频，发minecraft视频……没了……
 
@@ -104,16 +199,18 @@ features:
 <br>
 <br>
 
-# 想知道为什么服务器倒闭?  <Badge type="warning" text="论我的惨痛经历" />  
+# 服务器倒闭?  <Badge type="warning" text="论我的惨痛经历" />
 
-### [来这看看](/badserver.html)     
+<br>
+<br>
+
+<button class="button" data-text="Awesome">
+    <span class="actual-text">&nbsp;See&nbsp;</span>
+    <span aria-hidden="true" class="hover-text">&nbsp;See&nbsp;</span>
+</button>
 
 
-### 你可能觉得开一个服务器很难，实际上并不简单
-### 技术不是难点，人际关系是。
-### 你不需要聪明，但是我太不聪明了
 ### 服务器毁于我手，我心服口服
-### 我再也不开服了！
 
 <br>
 <br>
@@ -154,7 +251,7 @@ const members = [
 ]
 </script>
 
-# 交了不少朋友
+# 为数不多的朋友
 
 
 <VPTeamMembers size="small" :members="members" />

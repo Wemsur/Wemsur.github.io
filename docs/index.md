@@ -29,8 +29,8 @@ features:
     details: 起床战争从来没赢过，pvp从来都是输
 
   - icon: 😀
-    title: 乐观的普通人
-    details: 但愿人长久
+    title: 不单身了
+    details: 愿天下有情人终成眷属
 ---
 
 <style>

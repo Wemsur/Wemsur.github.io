@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: Wemsur
-  text: b站鸽子，倒闭腐竹，minecraft菜鸟
+  text: 逃离单身啦！
   tagline: 往下看吧...
   image:
     src: /favicon.png
@@ -29,8 +29,8 @@ features:
     details: 起床战争从来没赢过，pvp从来都是输
 
   - icon: 😀
-    title: 乐观的Modrinth整合包开发者
-    details: 每天登录都在审核ing，不知道审核员跑哪去了
+    title: 乐观的普通人
+    details: 但愿人长久
 ---
 
 <style>

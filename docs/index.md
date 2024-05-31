@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: Wemsur
-  text: 逃离单身啦！
+  text: 似啦！
   tagline: 往下看吧...
   image:
     src: /favicon.png
@@ -29,8 +29,8 @@ features:
     details: 起床战争从来没赢过，pvp从来都是输
 
   - icon: 😀
-    title: 不单身了
-    details: 愿天下有情人终成眷属
+    title: 似了
+    details: 不见过往，不见未来
 ---
 
 <style>

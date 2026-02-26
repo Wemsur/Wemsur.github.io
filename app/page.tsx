@@ -16,7 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 // 引入 Lucide 图标库中的各种图标
-import { Github, Twitter, MonitorPlay, Film, Tv, Video, Youtube, ChevronsDown } from "lucide-react";
+import { Github, Film, Tv, Video, ChevronsDown } from "lucide-react";
 
 
 
@@ -165,6 +165,7 @@ export default function Home() {
                 loop
                 playsInline
                 preload="metadata"
+                poster="/video-cover.jpg"
                 className="absolute inset-0 z-0 h-full w-full object-cover pointer-events-none"
             >
               <source src="/collection.mp4" type="video/mp4" />
@@ -438,7 +439,7 @@ export default function Home() {
             <section id="contact" className="scroll-mt-24 pb-24">
               <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center mb-12">
                 <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-5xl font-bold">
-                  Let's Collaborate
+                  Lets Collaborate
                 </h2>
                 <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
                   Need an editor for your next video? Send me a message!
@@ -450,7 +451,7 @@ export default function Home() {
                 <Card className="border-primary/20 shadow-lg">
                   <CardHeader>
                     <CardTitle>Contact Form</CardTitle>
-                    <CardDescription>I'll get back to you as soon as possible.</CardDescription>
+                    <CardDescription>Ill get back to you as soon as possible.</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {/* 姓名输入框 */}

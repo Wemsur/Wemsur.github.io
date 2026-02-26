@@ -19,7 +19,6 @@ import { Separator } from "@/components/ui/separator";
 import { Github, Twitter, MonitorPlay, Film, Tv, Video, Youtube, ChevronsDown } from "lucide-react";
 
 
-import { "../public/mc.png" } fr
 
 // 引入 Next.js 的内置路由链接组件
 import Link from "next/link";

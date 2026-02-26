@@ -252,7 +252,7 @@ export default function Home() {
             {/* 关于我区域 (About Section) */}
             <section id="about" className="scroll-mt-24">
               <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center mb-12">
-                <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-5xl font-bold">
+                <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-5xl font-bold tracking-[0.05em]" style={{ fontFamily: 'var(--font-secondary)' }}>
                   关于
                 </h2>
                 <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">

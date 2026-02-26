@@ -1,12 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+/* 引入分包后的字体样式 */
+@import "../public/fonts/FeiBo/result.css";
+@import "../public/fonts/CangJiGao/result.css";
 
 @custom-variant dark (&:is(.dark *));
 
-@font-face {
+/*@font-face {
   font-family: 'FeiBo';
-  /* 确保路径指向你放入 public/fonts/ 文件夹下的 .otf 文件 */
   src: url('/fonts/FeiBo.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
@@ -19,7 +21,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+}*/
 
 @theme inline {
   --color-background: var(--background);
@@ -99,8 +101,8 @@
 
   --tracking-normal: 0em;
 
-  --font-custom: 'FeiBo', sans-serif;
-  --font-secondary: 'CangJiGao', sans-serif;
+  --font-custom: '飞波正点体', sans-serif;
+  --font-secondary: 'CJ-gaodeguo-mh', sans-serif;
 }
 
 .dark {

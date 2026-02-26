@@ -164,7 +164,7 @@ export default function Home() {
                 muted
                 loop
                 playsInline
-                preload="auto"
+                preload="metadata"
                 className="absolute inset-0 z-0 h-full w-full object-cover pointer-events-none"
             >
               <source src="/collection.mp4" type="video/mp4" />

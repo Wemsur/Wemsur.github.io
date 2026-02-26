@@ -18,6 +18,9 @@ import { Separator } from "@/components/ui/separator";
 // 引入 Lucide 图标库中的各种图标
 import { Github, Twitter, MonitorPlay, Film, Tv, Video, Youtube, ChevronsDown } from "lucide-react";
 
+
+import { "../public/mc.png" } fr
+
 // 引入 Next.js 的内置路由链接组件
 import Link from "next/link";
 
@@ -265,7 +268,8 @@ export default function Home() {
                 {/* 卡片1：电视台剪辑 */}
                 <Card className="bg-card/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
                   <CardHeader>
-                    <MonitorPlay className="h-10 w-10 mb-2 text-primary" />
+                    <Video className="h-10 w-10 mb-2 text-primary" />
+
                     <CardTitle>TV Station Editor</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -289,7 +293,7 @@ export default function Home() {
                 {/* 卡片3：视频剪辑技能 */}
                 <Card className="bg-card/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
                   <CardHeader>
-                    <Video className="h-10 w-10 mb-2 text-primary" />
+                    <MonitorPlay className="h-10 w-10 mb-2 text-primary" />
                     <CardTitle>Video Editing</CardTitle>
                   </CardHeader>
                   <CardContent>

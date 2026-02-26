@@ -265,39 +265,53 @@ export default function Home() {
               {/* 使用 CSS Grid 布局展示个人能力卡片 */}
               <div className="mx-auto grid justify-center gap-6 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
                 {/* 卡片1：电视台剪辑 */}
-                <Card className="bg-card/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
+                <Card className="bg-card/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 hover:bg-primary/10 hover:shadow-primary/20 transition-colors">
                   <CardHeader>
                     <Video className="h-10 w-10 mb-2 text-primary" />
-
-                    <CardTitle>TV Station Editor</CardTitle>
+                    <CardTitle>视频剪辑</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Responsible for post-production of campus news and events, ensuring high-quality broadcast standards.
+                      立志做高质量中长视频<br/>
+                      b站视频数据惨淡<br/>
+                      受神秘的b站推流，不想再做<br/>
+                      基本掌握达芬奇的剪辑，调色面板
                     </p>
                   </CardContent>
                 </Card>
                 {/* 卡片2：B站创作者 */}
                 <Card className="bg-card/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
                   <CardHeader>
-                    <Tv className="h-10 w-10 mb-2 text-primary" />
-                    <CardTitle>Bilibili Creator</CardTitle>
+                    <img
+                        src="/Solariix.png"
+                        alt="Minecraft Icon"
+                        className="h-10 w-20 mb-2 object-contain"
+                    />
+                    <CardTitle>Solariix成员</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Producing Minecraft gameplay, tutorials, and cinematic builds for a growing community.
+                      在SolarIIX团队中<br/>
+                      担任…什么职务呢？<br/>
+                      运营？
                     </p>
                   </CardContent>
                 </Card>
                 {/* 卡片3：视频剪辑技能 */}
                 <Card className="bg-card/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
                   <CardHeader>
-                    <MonitorPlay className="h-10 w-10 mb-2 text-primary" />
-                    <CardTitle>Video Editing</CardTitle>
+                    <img
+                        src="/mc.png"
+                        alt="Minecraft Icon"
+                        className="h-10 w-10 mb-2 object-contain rounded-xl"
+                    />
+                    <CardTitle>Minecraft玩家</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Proficient in Premiere Pro, After Effects, and Davinci Resolve. Focus on pacing, sound design, and color grading.
+                      生电玩家，pvp技术极低<br/>
+                      曾带领像素之源（原wewmem）走向失败<br/>
+
                     </p>
                   </CardContent>
                 </Card>
@@ -310,8 +324,8 @@ export default function Home() {
             {/* 项目展示区域 (Projects Section) */}
             <section id="projects" className="scroll-mt-24">
               <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center mb-12">
-                <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-5xl font-bold">
-                  Selected Works
+                <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-5xl font-bold tracking-[0.05em]" style={{ fontFamily: 'var(--font-secondary)' }}>
+                  作品
                 </h2>
                 <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
                   A showcase of my recent editing projects.

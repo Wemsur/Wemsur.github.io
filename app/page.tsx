@@ -37,7 +37,7 @@ export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
 
   // 新增状态：存储当前显示的“一言”内容
-  const [hitokoto, setHitokoto] = useState("这里放一言");
+  const [hitokoto, setHitokoto] = useState("心中是寂然的轰鸣，像是某种巨大的坍塌。");
   // 新增状态：控制“一言”文字的可见性，用于实现渐隐渐现动画
   const [isVisible, setIsVisible] = useState(true);
   // --- 新增状态：用来检测鼠标是否悬浮在首屏文字区域 ---
@@ -192,7 +192,8 @@ export default function Home() {
               </Badge>
 
               {/* 主标题区 */}
-              <h1 className="font-heading sm:text-8xl md:text-8xl lg:text-8xl font-bold tracking-tighter leading-[0.5]">
+              {/* 这里的 text-6xl 是移动端的基础大小，sm:text-7xl 以上是针对大屏幕的缩放 */}
+              <h1 className="font-heading text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.2] md:leading-[0.5]">
                 {/* 名字部分 */}
                 <span
                     className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
@@ -208,12 +209,10 @@ export default function Home() {
                 </span>
                 <br />
                 {/* 一言部分 */}
-                <span
-                    className={cn(
-                        "text-4xl bg-clip-text text-transparent bg-gradient-to-r text-accent-foreground transition-opacity duration-500 tracking-[-0.02em]",
-                        isVisible ? "opacity-100" : "opacity-0"
-                    )}
-                >
+                <span className={cn(
+                    "text-2xl sm:text-3xl md:text-4xl bg-clip-text text-transparent bg-gradient-to-r text-accent-foreground transition-opacity duration-500 tracking-[-0.02em]",
+                    isVisible ? "opacity-100" : "opacity-0"
+                )}>
                 {hitokoto}
               </span>
               </h1>

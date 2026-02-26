@@ -173,3 +173,10 @@ button,
   transition: none !important;
 }
 
+/* --- 现代化滚动条修改方案 --- */
+
+/* 1. 针对 Chrome, Edge, Safari (WebKit) */
+::-webkit-scrollbar {
+  display: none;
+}
+

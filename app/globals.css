@@ -1,0 +1,175 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: 'FeiBo';
+  /* 确保路径指向你放入 public/fonts/ 文件夹下的 .otf 文件 */
+  src: url('/fonts/FeiBo.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CangJiGao';
+  src: url('/fonts/CangJiGao.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-tomorrow), ui-sans-serif, sans-serif, system-ui;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-serif: var(--font-biorhyme), ui-serif, serif;
+  
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+}
+
+:root {
+  --radius: 0.15rem;
+  --background: oklch(0.9842 0.0034 247.8575);
+  --foreground: oklch(0.3013 0.0240 238.8090);
+
+  --card: oklch(1.0000 0 0);
+  --card-foreground: oklch(0.3193 0.0228 209.5983);
+
+  --popover: oklch(1.0000 0 0);
+  --popover-foreground: oklch(0.3249 0.0245 200.1420);
+
+  --primary: oklch(0.5200 0.0490 147.7951);
+  --primary-foreground: oklch(1.0000 0 0);
+
+  --secondary: oklch(0.9276 0.0058 264.5313);
+  --secondary-foreground: oklch(0.4070 0.0296 173.1820);
+
+  --muted: oklch(0.9670 0.0029 264.5419);
+  --muted-foreground: oklch(0.3025 0.0164 156.1138);
+
+  --accent: oklch(0.9181 0.0477 145.1734);
+  --accent-foreground: oklch(0.4091 0.0226 200.5214);
+
+  --destructive: oklch(0.5664 0.2031 32.6994);
+  --destructive-foreground: oklch(1.0000 0 0);
+
+  --border: oklch(0.8717 0.0093 258.3382);
+  --input: oklch(0.9163 0.0250 143.4909);
+  --ring: oklch(0.7099 0.0954 147.5011);
+
+  --chart-1: oklch(0.8726 0.0394 172.0127);
+  --chart-2: oklch(0.7384 0.0617 162.7135);
+  --chart-3: oklch(0.6260 0.0510 162.7833);
+  --chart-4: oklch(0.5002 0.0590 162.0581);
+  --chart-5: oklch(0.4401 0.0634 145.8323);
+
+  --tracking-normal: 0em;
+
+  --font-custom: 'FeiBo', sans-serif;
+  --font-secondary: 'CangJiGao', sans-serif;
+}
+
+.dark {
+  --background: oklch(0.2063 0.0120 277.8347);
+  --foreground: oklch(0.9363 0.0433 183.9088);
+
+  --card: oklch(0.2810 0.0177 227.3784);
+  --card-foreground: oklch(0.9363 0.0433 183.9088);
+
+  --popover: oklch(0.2149 0.0085 240.3030);
+  --popover-foreground: oklch(0.8556 0.1555 179.7932);
+
+  --primary: oklch(0.8556 0.1555 179.7932);
+  --primary-foreground: oklch(0.2523 0.0373 174.7008);
+
+  --secondary: oklch(0.3675 0.0243 204.2418);
+  --secondary-foreground: oklch(0.8717 0.0093 258.3382);
+
+  --muted: oklch(0.2801 0.0188 225.3491);
+  --muted-foreground: oklch(0.7137 0.0192 261.3246);
+
+  --accent: oklch(0.3729 0.0306 259.7328);
+  --accent-foreground: oklch(0.8717 0.0093 258.3382);
+
+  --destructive: oklch(0.7036 0.1665 59.0920);
+  --destructive-foreground: oklch(0.2624 0.0145 181.5879);
+
+  --border: oklch(0.4911 0.0340 196.1004);
+  --input: oklch(0.4291 0.0366 195.8739);
+  --ring: oklch(0.8556 0.1555 179.7932);
+
+  --chart-1: oklch(0.8605 0.1497 187.8375);
+  --chart-2: oklch(0.7883 0.1096 181.0760);
+  --chart-3: oklch(0.6223 0.0709 184.5682);
+  --chart-4: oklch(0.4771 0.0398 212.3551);
+  --chart-5: oklch(0.3253 0.0359 195.5305);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    letter-spacing: var(--tracking-normal);
+  }
+}
+
+/* 强制给 html 和 body 添加背景色过渡 */
+html,
+body {
+  /* duration 设为 0.5s 比较柔和，你可以根据喜好调快或调慢 */
+  transition: background-color 0.5s ease !important;
+}
+
+/* 针对页面内主要的容器也开启背景过渡 */
+main,
+section,
+header,
+footer,
+.card,
+div[class*="bg-background"],
+div[class*="bg-card"] {
+  transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease !important;
+}
+
+/* 排除掉一些不应该有背景过渡的元素（可选，防止按钮 hover 变迟钝） */
+button,
+.no-transition {
+  transition: none !important;
+}
+

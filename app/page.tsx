@@ -224,20 +224,31 @@ export default function Home() {
               </Badge>
 
               {/* 主标题区 */}
-              {/* 这里的 text-6xl 是移动端的基础大小，sm:text-7xl 以上是针对大屏幕的缩放 */}
-              <h1 className="font-heading text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter antialiased">
-                {/* 名字部分：添加 mb-8 (手机端) 和 md:mb-0 (大屏幕复原) */}
+              <h1 className="font-heading font-bold tracking-tighter antialiased flex flex-col items-center">
+                {/* 名字部分容器 */}
                 <div
-                    className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent mb-32 md:mb-4 lg:mb-6 text-6xl"
+                    className={cn(
+                        "flex flex-col md:flex-row items-center justify-center", // 手机端纵向，电脑端横向
+                        "bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent",
+                        "text-7xl md:text-9xl", // 保持你设定的字号
+                        "mb-24 md:mb-12" // 手机端 mb-24 确保下方内容显著下移，md 恢复常规
+                    )}
                     style={{
                       fontFamily: 'var(--font-custom)',
-                      lineHeight: '1.1', // 适当调整行高防止文字被截断
+                      lineHeight: '1.1', // 恢复正常行高，间距由 margin 控制更精准
                     }}
                 >
-                  风尘-Wemsur
+                  {/* 第一行：风尘 */}
+                  <span>风尘</span>
+
+                  {/* 中间横杠：手机端隐藏，电脑端显示 */}
+                  <span className="hidden md:inline mx-4">-</span>
+
+                  {/* 第二行：Wemsur */}
+                  <span className="mt-2 md:mt-0">Wemsur</span>
                 </div>
 
-                {/* 一言部分 */}
+                {/* 一言部分：已被上面的 mb-24 整体推下 */}
                 <div className={cn(
                     "text-2xl sm:text-3xl md:text-4xl bg-clip-text text-transparent bg-gradient-to-r text-accent-foreground transition-opacity duration-500 tracking-[-0.02em] font-medium",
                     isVisible ? "opacity-100" : "opacity-0"
@@ -245,7 +256,6 @@ export default function Home() {
                   {hitokoto}
                 </div>
               </h1>
-
               {/* 个人简介副标题 - 改成了 text-white/90 以便在深色视频上更清晰 */}
               <p className="max-w-[42rem] mx-auto leading-normal text-white/90 drop-shadow-md sm:text-xl sm:leading-8 font-light">
                 Davinci Resolve使用者 | Minecraft/活动集锦视频创作 <br />

@@ -18,8 +18,6 @@ import { Separator } from "@/components/ui/separator";
 // 引入 Lucide 图标库中的各种图标
 import { Github, Film, Tv, Video, ChevronsDown } from "lucide-react";
 
-
-
 // 引入 Next.js 的内置路由链接组件
 import Link from "next/link";
 
@@ -60,38 +58,42 @@ export default function Home() {
     // 组件卸载时移除监听器，防止内存泄漏
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  // 补充缺失的 ref 和 state
+  const videoRef = useRef<HTMLVideoElement>(null);
+  // 这里请填入你的低画质视频/小体积视频的初始路径
+  const [videoSrc, setVideoSrc] = useState("/low-res-collection.mp4");
   // 新增效果钩子：处理 Hitokoto (一言) 的数据获取与定时刷新动画
+  // 修正后的效果钩子：处理高画质视频预加载与无缝替换
   useEffect(() => {
-    const fetchHitokoto = async () => {
-      // 1. 开始渐隐：设置可见性为 false，触发 CSS 的 opacity 过渡
-      setIsVisible(false);
+    const highResPath = "/high-res-collection.mp4"; // 确保此文件在 public 目录下
+    const highResVideo = document.createElement('video');
+    highResVideo.src = highResPath;
+    highResVideo.muted = true;
+    highResVideo.preload = "auto";
 
-      // 2. 暂停执行 500 毫秒，等待 CSS 渐隐动画完全结束
-      await new Promise(resolve => setTimeout(resolve, 500));
+    highResVideo.oncanplaythrough = () => {
+      const videoElement = videoRef.current;
 
-      try {
-        // 3. 请求一言 API 数据
-        const res = await fetch('https://v1.hitokoto.cn');
-        const data = await res.json();
-        // 更新一言文本内容
-        setHitokoto(data.hitokoto);
-      } catch (error) {
-        console.error("Failed to fetch hitokoto:", error);
-      } finally {
-        // 4. 开始渐显：无论是成功还是失败，都重新显示文字
-        setIsVisible(true);
+      // 添加一个判断：确保 ref 存在，且当前播放的不是高清版，防止重复触发
+      if (videoElement && !videoElement.src.includes(highResPath)) {
+        const jumpTime = videoElement.currentTime;
+
+        const onMetadataLoaded = () => {
+          videoElement.currentTime = jumpTime;
+          videoElement.play().catch(e => console.error("自动播放被拦截:", e));
+          videoElement.removeEventListener('loadedmetadata', onMetadataLoaded);
+        };
+
+        videoElement.addEventListener('loadedmetadata', onMetadataLoaded);
+
+        // 核心修正：直接操作 DOM 的 src，确保 load() 加载的是新视频源，避免 React 渲染延迟
+        videoElement.src = highResPath;
+        videoElement.load();
+
+        // 最后同步 React 状态
+        setVideoSrc(highResPath);
       }
     };
-
-    // 组件首次挂载时，先执行一次获取
-    fetchHitokoto();
-
-    // 设置定时器，每 10000 毫秒 (10秒) 执行一次一言的获取与动画
-    const interval = setInterval(fetchHitokoto, 10000);
-
-    // 清理函数：组件卸载时销毁定时器
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -159,17 +161,19 @@ export default function Home() {
               className="relative flex flex-col items-center justify-center min-h-screen w-full text-center px-4 overflow-hidden"
           >
             {/* --- 背景视频 (z-0 层，最底部) --- */}
+            {/* --- 背景视频 (z-0 层，最底部) --- */}
             <video
+                ref={videoRef}
+                src={videoSrc} // 直接将 src 绑定在 video 标签上
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="metadata"
+                className="fixed inset-0 z-0 h-full w-full object-cover pointer-events-none"
                 poster="/video-cover.jpg"
-                className="absolute inset-0 z-0 h-full w-full object-cover pointer-events-none"
-            >
-              <source src="/collection.mp4" type="video/mp4" />
-            </video>
+            />
+            {/* 删除了内部的 <source> 标签 */}
 
             {/* --- 动态半透明蒙层 --- */}
             <div

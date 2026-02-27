@@ -257,7 +257,7 @@ export default function Home() {
                 </div>
               </h1>
               {/* 个人简介副标题 - 改成了 text-white/90 以便在深色视频上更清晰 */}
-              <p className="max-w-[42rem] mx-auto leading-normal text-white/90 drop-shadow-md sm:text-xl sm:leading-8 font-light">
+              <p className="max-w-[42rem] mx-auto leading-normal text-muted-foreground drop-shadow-md sm:text-xl sm:leading-8 font-light">
                 Davinci Resolve使用者 | Minecraft/活动集锦视频创作 <br />
                 会点编程吗？可能吧
               </p>
@@ -365,7 +365,7 @@ export default function Home() {
                   作品
                 </h2>
                 <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-                  A showcase of my recent editing projects.
+                  精选视频作品陈列，更多见bilibili
                 </p>
               </div>
 

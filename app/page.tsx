@@ -60,41 +60,64 @@ export default function Home() {
   }, []);
   // 补充缺失的 ref 和 state
   const videoRef = useRef<HTMLVideoElement>(null);
-  // 这里请填入你的低画质视频/小体积视频的初始路径
-  const [videoSrc, setVideoSrc] = useState("/low-res-collection.mp4");
-  // 新增效果钩子：处理 Hitokoto (一言) 的数据获取与定时刷新动画
-  // 修正后的效果钩子：处理高画质视频预加载与无缝替换
+
+  // --- 1. 状态定义 ---
+  const [videoSrc, setVideoSrc] = useState("");
+  const [posterSrc, setPosterSrc] = useState("");
+  const [isMounted, setIsMounted] = useState(false); // 新增：标记组件是否已挂载
+
   useEffect(() => {
-    const highResPath = "/high-res-collection.mp4"; // 确保此文件在 public 目录下
+    setIsMounted(true);
+
+    const isMobile = window.innerWidth < 768;
+    const paths = {
+      poster: "/video-cover.jpg",
+      lowRes: isMobile ? "/low-res-mobile.mp4" : "/low-res-collection.mp4",
+      highRes: isMobile ? "/high-res-mobile.mp4" : "/high-res-collection.mp4"
+    };
+
+    // 1. 立即设置初始路径
+    setPosterSrc(paths.poster);
+    setVideoSrc(paths.lowRes);
+
+    // 2. 预加载高清视频
     const highResVideo = document.createElement('video');
-    highResVideo.src = highResPath;
+    highResVideo.src = paths.highRes;
     highResVideo.muted = true;
     highResVideo.preload = "auto";
+    highResVideo.playsInline = true;
 
+    // 3. 当高清视频准备好时执行切换
     highResVideo.oncanplaythrough = () => {
       const videoElement = videoRef.current;
+      // 检查：1. 元素存在； 2. 当前不是高清版； 3. 确实有高清路径
+      if (videoElement && !videoElement.src.includes(paths.highRes)) {
+        console.log("高清视频已就绪，开始无缝切换...");
 
-      // 添加一个判断：确保 ref 存在，且当前播放的不是高清版，防止重复触发
-      if (videoElement && !videoElement.src.includes(highResPath)) {
-        const jumpTime = videoElement.currentTime;
+        const jumpTime = videoElement.currentTime; // 记录当前播放进度
 
         const onMetadataLoaded = () => {
-          videoElement.currentTime = jumpTime;
-          videoElement.play().catch(e => console.error("自动播放被拦截:", e));
+          videoElement.currentTime = jumpTime; // 恢复进度
+          videoElement.play().catch(e => console.warn("自动播放尝试:", e));
           videoElement.removeEventListener('loadedmetadata', onMetadataLoaded);
         };
 
         videoElement.addEventListener('loadedmetadata', onMetadataLoaded);
 
-        // 核心修正：直接操作 DOM 的 src，确保 load() 加载的是新视频源，避免 React 渲染延迟
-        videoElement.src = highResPath;
-        videoElement.load();
-
-        // 最后同步 React 状态
-        setVideoSrc(highResPath);
+        // 执行切换
+        videoElement.src = paths.highRes;
+        videoElement.load(); // 强制加载新源
+        setVideoSrc(paths.highRes); // 更新状态同步 UI
       }
     };
-  }, []);
+
+    // 清理函数：如果组件卸载，停止预加载
+    return () => {
+      highResVideo.oncanplaythrough = null;
+      highResVideo.src = "";
+      highResVideo.load();
+    };
+  }, []); // 保持空依赖数组，仅在挂载时执行一次
 
   return (
       // 页面最外层容器，设置最小高度铺满屏幕、背景色以及基础字体样式
@@ -162,17 +185,19 @@ export default function Home() {
           >
             {/* --- 背景视频 (z-0 层，最底部) --- */}
             {/* --- 背景视频 (z-0 层，最底部) --- */}
-            <video
-                ref={videoRef}
-                src={videoSrc} // 直接将 src 绑定在 video 标签上
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                className="fixed inset-0 z-0 h-full w-full object-cover pointer-events-none"
-                poster="/video-cover.jpg"
-            />
+            {/* 修改后的视频组件 */}
+            {isMounted && (
+                <video
+                    ref={videoRef}
+                    src={videoSrc}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 z-0 h-full w-full object-cover pointer-events-none" // 将 fixed 改为 absolute
+                    poster={posterSrc}
+                />
+            )}
             {/* 删除了内部的 <source> 标签 */}
 
             {/* --- 动态半透明蒙层 --- */}
@@ -200,28 +225,25 @@ export default function Home() {
 
               {/* 主标题区 */}
               {/* 这里的 text-6xl 是移动端的基础大小，sm:text-7xl 以上是针对大屏幕的缩放 */}
-              <h1 className="font-heading text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.2] md:leading-[0.5]">
-                {/* 名字部分 */}
-                <span
-                    className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+              <h1 className="font-heading text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter antialiased">
+                {/* 名字部分：添加 mb-8 (手机端) 和 md:mb-0 (大屏幕复原) */}
+                <div
+                    className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent mb-32 md:mb-4 lg:mb-6 text-6xl"
                     style={{
                       fontFamily: 'var(--font-custom)',
-                      WebkitTextStroke: '0px transparent',
-                      WebkitFontSmoothing: 'antialiased',
-                      MozOsxFontSmoothing: 'grayscale',
-                      letterSpacing: '-0.01em',
+                      lineHeight: '1.1', // 适当调整行高防止文字被截断
                     }}
                 >
                   风尘-Wemsur
-                </span>
-                <br />
+                </div>
+
                 {/* 一言部分 */}
-                <span className={cn(
-                    "text-2xl sm:text-3xl md:text-4xl bg-clip-text text-transparent bg-gradient-to-r text-accent-foreground transition-opacity duration-500 tracking-[-0.02em]",
+                <div className={cn(
+                    "text-2xl sm:text-3xl md:text-4xl bg-clip-text text-transparent bg-gradient-to-r text-accent-foreground transition-opacity duration-500 tracking-[-0.02em] font-medium",
                     isVisible ? "opacity-100" : "opacity-0"
                 )}>
-                {hitokoto}
-              </span>
+                  {hitokoto}
+                </div>
               </h1>
 
               {/* 个人简介副标题 - 改成了 text-white/90 以便在深色视频上更清晰 */}

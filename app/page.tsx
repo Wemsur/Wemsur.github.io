@@ -184,22 +184,22 @@ export default function Home() {
               className="relative flex flex-col items-center justify-center min-h-screen w-full text-center px-4 overflow-hidden"
           >
             {/* --- 背景视频 (z-0 层，最底部) --- */}
-            {/* --- 背景视频 (z-0 层，最底部) --- */}
-            {/* 修改后的视频组件 */}
-            {isMounted && (
-                <video
-                    ref={videoRef}
-                    src={videoSrc}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 z-0 h-full w-full object-cover pointer-events-none" // 将 fixed 改为 absolute
-                    poster={posterSrc}
-                />
-            )}
-            {/* 删除了内部的 <source> 标签 */}
-
+            {/* --- 背景视频容器 (替换原有的 video 标签) --- */}
+            <div className="absolute inset-0 z-0 h-full w-full pointer-events-none">
+              <div style={{ padding: "56.25% 0 0 0", position: "relative", height: "100%" }}>
+                <div style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
+                  <iframe
+                      src="https://embed.wave.video/AA4aNjqJ56N4g2aC?autoplay=1&muted=1&loop=1&controls=0"
+                      height="100%"
+                      width="100%"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen"
+                      scrolling="no"
+                      className="object-cover scale-[1.5]" // 这里的 scale 是为了确保视频铺满屏幕不留黑边
+                  ></iframe>
+                </div>
+              </div>
+            </div>
             {/* --- 动态半透明蒙层 --- */}
             <div
                 className={cn(
@@ -231,7 +231,8 @@ export default function Home() {
                         "flex flex-col md:flex-row items-center justify-center", // 手机端纵向，电脑端横向
                         "bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent",
                         "text-7xl md:text-9xl", // 保持你设定的字号
-                        "mb-24 md:mb-12" // 手机端 mb-24 确保下方内容显著下移，md 恢复常规
+                        "mb-24 md:mb-12" +
+                        "transition-colors" // 手机端 mb-24 确保下方内容显著下移，md 恢复常规
                     )}
                     style={{
                       fontFamily: 'var(--font-custom)',
@@ -239,13 +240,13 @@ export default function Home() {
                     }}
                 >
                   {/* 第一行：风尘 */}
-                  <span>风尘</span>
+                  <span className="transition-all">风尘</span>
 
                   {/* 中间横杠：手机端隐藏，电脑端显示 */}
-                  <span className="hidden md:inline mx-4">-</span>
+                  <span className="transition-all hidden md:inline mx-4">-</span>
 
                   {/* 第二行：Wemsur */}
-                  <span className="mt-2 md:mt-0">Wemsur</span>
+                  <span className="transition-all mt-2 md:mt-0">Wemsur</span>
                 </div>
 
                 {/* 一言部分：已被上面的 mb-24 整体推下 */}

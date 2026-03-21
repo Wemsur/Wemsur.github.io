@@ -532,7 +532,7 @@ export default function Home() {
               <br/>
               <br/>
               友链：<Link
-                href="https://jaynb.com/%e5%8f%8b%e6%83%85%e9%93%be%e6%8e%a5/"
+                href="https://jaynb.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium underline underline-offset-4 text-primary hover:opacity-80 transition-opacity"

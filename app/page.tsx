@@ -73,7 +73,7 @@ export default function Home() {
     const paths = {
       poster: "/video-cover.jpg",
       lowRes: isMobile ? "https://cdn.byside.top/Wemsur/low-res-mobile.mp4" : "https://cdn.byside.top/Wemsur/low-res-collection.mp4",
-      highRes: isMobile ? "https://cdn.byside.top/Wemsur/high-res-mobile.mp4" : "https://cdn.byside.top/Wemsur/high-res-collection.mp4"
+      highRes: isMobile ? "https://cdn.byside.top/Wemsur/high-res-mobile.mp4" : "https://ybrc.byside.top/upload/high-res-collection.mp4"
     };
 
     setPosterSrc(paths.poster);
@@ -519,9 +519,18 @@ export default function Home() {
         <footer className="py-6 md:px-8 md:py-0 border-t bg-muted/30">
           <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row mx-auto px-4">
             <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-              Built by <span className="font-medium underline underline-offset-4 text-primary">Wemsur</span>.
+              由 <span className="font-medium underline underline-offset-4 text-primary">Wemsur</span> 搭建.
               <br className="md:hidden"/>
               &copy; {new Date().getFullYear()} All rights reserved.
+              <br/>特别鸣谢：<Link
+                href="https://ybrc.byside.top/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium underline underline-offset-4 text-primary hover:opacity-80 transition-opacity"
+            >
+              YBRC
+            </Link>-帮助托管主页视频.
+
             </p>
           </div>
           {/*<div>

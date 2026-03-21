@@ -522,15 +522,21 @@ export default function Home() {
               由 <span className="font-medium underline underline-offset-4 text-primary">Wemsur</span> 搭建.
               <br className="md:hidden"/>
               &copy; {new Date().getFullYear()} All rights reserved.
-              <br/>特别鸣谢：<Link
+              <br/>
+              特别鸣谢：<Link
                 href="https://ybrc.byside.top/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium underline underline-offset-4 text-primary hover:opacity-80 transition-opacity"
-            >
-              YBRC
-            </Link>-帮助托管主页视频.
-
+              >YBRC</Link>-帮助托管主页视频.
+              <br/>
+              <br/>
+              友链：<Link
+                href="https://jaynb.com/%e5%8f%8b%e6%83%85%e9%93%be%e6%8e%a5/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium underline underline-offset-4 text-primary hover:opacity-80 transition-opacity"
+            >Jay</Link>
             </p>
           </div>
           {/*<div>
